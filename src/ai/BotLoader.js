@@ -52,5 +52,5 @@ BotLoader.prototype.addBot = function() {
     this.gameServer.clients.push(s);
 
     // Add to world
-    s.packetHandler.setNickname(this.getName());
+    // s.packetHandler.setNickname(this.getName());
 };

@@ -5,7 +5,7 @@ var Vector = require('../modules/Vector');
 function BotPlayer() {
     PlayerTracker.apply(this, Array.prototype.slice.call(arguments));
     //this.color = gameServer.getRandomColor();
-
+    this.isBot = true
     this.splitCooldown = 0;
 }
 
@@ -66,8 +66,9 @@ BotPlayer.prototype.update = function() { // Overrides the update function from 
 };
 
 BotPlayer.prototype.decide = function(cell) {
+
     if (!cell) return; // Cell was eaten, check in the next tick (I'm too lazy)
-    
+
     var cellPos = cell.position;
     var result = new Vector(0, 0);
     // Splitting

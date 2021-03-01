@@ -28,7 +28,7 @@ function PlayerTracker(gameServer, socket) {
     this.tickLeaderboard = 0;
     this.tickViewBox = 0;
     this.viewScale = 1;
-
+    this.isBot = false;
     this.team = 0;
     this.spectate = false;
     this.freeRoam = false; // Free-roam mode enables player to move in spectate mode

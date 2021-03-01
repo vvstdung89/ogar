@@ -64,6 +64,7 @@ FFA.prototype.updateLB = function(gameServer) {
         if (!player) return;
         if (player.playerTracker.cells.length <= 0) return;
         if (player.playerTracker.disconnect > 0) return;
+        if (player.playerTracker.isBot) return;
         players.push(player.playerTracker);
     });
 

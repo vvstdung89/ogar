@@ -21,8 +21,10 @@ process.argv.forEach(function(val) {
 
 var gameServer;
 startServer();
+// var firstStart = false;
 
 function startServer() {
+
     gameServer = new GameServer();
     gameServer.start();
 
@@ -30,18 +32,34 @@ function startServer() {
     gameServer.shutdownHandle = function() {
         process.exit(0);
     };
+
     gameServer.restartHandle = function(timeout) {
         gameServer.restartScheduled = new Date();
         gameServer.restartAt = new Date(Date.now() + timeout);
         gameServer.restartId = setTimeout(function() {
-                                   gameServer.socketServer.close();
-                                   gameServer.httpServer.close();
+                                   // gameServer.socketServer.close();
+                                   // gameServer.httpServer.close();
                                    gameServer = null;
                                    if (global.gc) global.gc(); // Force garbage collection
                                    process.stdout.write("\u001b[2J\u001b[0;0H"); // Clear the console
                                    startServer();
                                }, timeout);
     };
+
+    // if (!firstStart) {
+    //     setInterval(() => {
+    //         firstStart = true;
+    //         console.log("close");
+    //         //TODO: notify will reset in 10 seconds
+    //         gameServer.socketServer.close();
+    //         gameServer.httpServer.close();
+    //         setTimeout(()=>{
+    //             console.log("restart")
+    //             gameServer.restartHandle(100)
+    //         },10*1000)
+    //     }, 2*60*1000) // reset every 2 minute, 5 wave
+    // }
+
 }
 
 // Initialize the server console

@@ -17,7 +17,7 @@ UpdateLeaderboard.prototype.build = function() {
             // Custom text list
             buffer.setUint8(48);                                                // Packet ID
             buffer.setUint32(this.leaderboard.length);                          // String amount
-            
+
             for (var i = 0; i < this.leaderboard.length; i++) {
                 if (this.protocolVersion != 5) {
                     buffer.setStringUTF8(                                       // UTF-8 string
@@ -54,11 +54,11 @@ UpdateLeaderboard.prototype.build = function() {
             break;
         case 50:
             // Pie chart
-            buffer.setUint8(50);                                                // Packet ID
-            buffer.setUint32(this.leaderboard.length);                          // Color amount
-            for (var i = 0; i < this.leaderboard.length; i++) {
-                buffer.setFloat32(this.leaderboard[i]);                         // A color's size
-            }
+            // buffer.setUint8(50);                                                // Packet ID
+            // buffer.setUint32(this.leaderboard.length);                          // Color amount
+            // for (var i = 0; i < this.leaderboard.length; i++) {
+            //     buffer.setFloat32(this.leaderboard[i]);                         // A color's size
+            // }
             break;
     }
 

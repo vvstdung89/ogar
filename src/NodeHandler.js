@@ -1,5 +1,6 @@
 var Entity = require('./entity');
 var Vector = require('./modules/Vector');
+var FakeSocket = require('./ai/FakeSocket');
 
 function getTime(a) {
     return a[0] * 1000 + a[1] / 1000000;
@@ -84,7 +85,10 @@ NodeHandler.prototype.update = function() {
             if (cell.collisionRestoreTicks > 0) cell.collisionRestoreTicks--;
 
             // Eating
-            cell.eat();
+            if (!client.isBot) {
+                cell.eat();
+            }
+
 
             var t2e = process.hrtime(t2s),
                 t3s = process.hrtime();

@@ -51,6 +51,7 @@ PlayerCell.prototype.move = function() {
 };
 
 PlayerCell.prototype.eat = function() {
+    // console.log(this)
     var nearby = this.gameServer.quadTree.query(this.getRange());
 
     var i = nearby.length;
@@ -60,6 +61,10 @@ PlayerCell.prototype.eat = function() {
         if (check.eaten) continue;
 
         if (this.gameServer.collisionHandler.canEat(this, check)) {
+
+            // console.log(check.nodeId)
+            // console.log(check.cellType)
+            // console.log(check.owner ? check.owner.cells.length == 1 : "N/A")
             check.eaten = true;
             check.onConsume(this);
             check.setKiller(this);
