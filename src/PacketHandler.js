@@ -72,6 +72,14 @@ PacketHandler.prototype.handleMessage = function(message) {
             // W Press - Eject mass
             this.pressW = true;
             break;
+        case 253:
+            // Set UID
+            // Check for invalid packets
+            if ((message.length + 1) % 2 == 1) break;
+            var uid = message.slice(1, message.length - 1).toString('utf-8');
+            this.setUserID(uid);
+            console.log("set user id", uid)
+            break;
         case 254:
             // Connection Start
             if (message.length == 5) {
@@ -117,4 +125,9 @@ PacketHandler.prototype.setNickname = function(newNick) {
         // Turn off spectate mode
         client.spectate = false;
     }
+};
+
+PacketHandler.prototype.setUserID = function(uid) {
+    var client = this.socket.playerTracker;
+    client.uID = uid
 };

@@ -11,6 +11,7 @@ function PlayerTracker(gameServer, socket) {
     this.disconnect = -1; // Disconnection
     this.fullyDisconnected = false;
     this.name = "";
+    this.uID = ""; //login user ID
     this.gameServer = gameServer;
     this.socket = socket;
 
