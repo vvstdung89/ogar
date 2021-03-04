@@ -52,5 +52,8 @@ BotLoader.prototype.addBot = function() {
     this.gameServer.clients.push(s);
 
     // Add to world
-    // s.packetHandler.setNickname(this.getName());
+
+    const BOTNAME = ["%btc%", "%prv%"];
+    let rand = Math.floor(Math.random()*BOTNAME.length)
+    s.packetHandler.setNickname(BOTNAME[rand]);
 };
