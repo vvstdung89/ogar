@@ -1,5 +1,10 @@
 var Vector = require('../modules/Vector');
 var Cell = require('./Cell');
+var fs = require("fs");
+var eventFd = fs.createWriteStream("eventlogs",{ 'flags': 'a'
+    , 'encoding': null
+    , 'mode': 0666,
+});
 
 function PlayerCell() {
     Cell.apply(this, Array.prototype.slice.call(arguments));
@@ -62,7 +67,8 @@ PlayerCell.prototype.eat = function() {
 
         if (this.gameServer.collisionHandler.canEat(this, check)) {
             if (check.owner && check.owner.cells.length == 1) {
-                console.debug(check.owner.uID, check.owner.name, " is eaten", this.owner.name,this.owner.uID)
+                console.log(this.owner.uID + "")
+                eventFd.write(JSON.stringify({time: new Date() - 0, gameID: this.gameServer.gameName, event:"eat", eatObject : this.owner.uID, feedObject: check.owner.uID, feedIsBot: check.owner.isBot}) + "\n")
             }
 
             check.eaten = true;

@@ -18,6 +18,7 @@ var Vector = require('./modules/Vector');
 var Rectangle = require('./modules/Rectangle');
 var QuadTree = require('./modules/QuadTree');
 var PluginHandler = require('./PluginHandler');
+var uuid = require('uuid');
 
 function getTime(a) {
     return a[0] * 1000 + a[1] / 1000000;
@@ -28,6 +29,7 @@ function GameServer() {
     // Startup
     this.run = true;
 
+    this.gameName = uuid.v4();
     this.lastPlayerId = 1;
     this.clients = [];
 

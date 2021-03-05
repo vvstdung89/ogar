@@ -25,7 +25,7 @@ PacketHandler.prototype.handleMessage = function(message) {
             if (this.protocolVersion == 5) {
                 // Check for invalid packets
                 if ((message.length + 1) % 2 == 1) break;
-                var name = message.slice(1, message.length - 1).toString('ucs2').substr(0, this.gameServer.config.playerMaxNickLength);
+                var name = message.slice(1).toString('ucs2').substr(0, this.gameServer.config.playerMaxNickLength);
                 this.setNickname(name);
             } else {
                 var name = message.slice(1, message.length - 1).toString('utf-8').substr(0, this.gameServer.config.playerMaxNickLength);
@@ -73,7 +73,7 @@ PacketHandler.prototype.handleMessage = function(message) {
             this.pressW = true;
             break;
         case 253: // Set UID
-            if ((message.length + 1) % 2 == 1) break;
+            var uid = message.slice(1).toString('ucs2');
             var uid = message.slice(1, message.length - 1).toString('utf-8');
             this.setUserID(uid);
             break;
