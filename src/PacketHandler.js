@@ -72,13 +72,10 @@ PacketHandler.prototype.handleMessage = function(message) {
             // W Press - Eject mass
             this.pressW = true;
             break;
-        case 253:
-            // Set UID
-            // Check for invalid packets
+        case 253: // Set UID
             if ((message.length + 1) % 2 == 1) break;
             var uid = message.slice(1, message.length - 1).toString('utf-8');
             this.setUserID(uid);
-            console.log("set user id", uid)
             break;
         case 254:
             // Connection Start
