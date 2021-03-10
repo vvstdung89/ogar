@@ -242,11 +242,11 @@ GameServer.prototype.start = function() {
                 if (!cell) continue;
 
                 cell.move = function() { return; }; // Clear function so that the cell cant move
-                //this.server.removeNode(cell);
+                this.server.removeNode(cell);
             }
 
             client.disconnect = this.server.config.playerDisconnectTime * 25;
-            this.socket.sendPacket = function() { return; }; // Clear function so no packets are sent
+            this.socket.sendPacket = function() {return; }; // Clear function so no packets are sent
         }
 
         ws.remoteAddress = ws._socket.remoteAddress;
@@ -264,6 +264,7 @@ GameServer.prototype.start = function() {
         ws.on('error', close.bind(bindObject));
         ws.on('close', close.bind(bindObject));
         this.clients.push(ws);
+
     }
 
     this.startStatsServer(this.config.serverStatsPort);

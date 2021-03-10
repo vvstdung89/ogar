@@ -57,7 +57,7 @@ function startServer() {
                 console.log("restart")
                 gameServer.restartHandle(100)
             },10*1000)
-        }, 2*60*1000) // reset every 2 minute, 5 wave
+        }, 5*60*1000) // reset every 2 minute, 5 wave
     }
 
 }

@@ -1,6 +1,6 @@
 var Packet = require('./packet');
 var Vector = require('./modules/Vector');
-
+var JWT = require('./modules/jwt')
 function PacketHandler(gameServer, socket) {
     this.gameServer = gameServer;
     this.socket = socket;
@@ -73,9 +73,14 @@ PacketHandler.prototype.handleMessage = function(message) {
             this.pressW = true;
             break;
         case 253: // Set UID
-            var uid = message.slice(1).toString('ucs2');
-            var uid = message.slice(1, message.length - 1).toString('utf-8');
-            this.setUserID(uid);
+            var token = message.slice(1).toString('ucs2');
+            let verifyData = JWT.verify(token, { issuer: "Incognito", subject: "Incognito Cryptocombat", audience: "Incognito" });
+            if (!verifyData.user._id) {
+                this.socket.sendPacket(new Packet.UnAuthen())
+                this.socket.close()
+                return
+            }
+            this.setUserID(verifyData.user._id);
             break;
         case 254:
             // Connection Start

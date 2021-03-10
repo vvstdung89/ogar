@@ -67,7 +67,6 @@ PlayerCell.prototype.eat = function() {
 
         if (this.gameServer.collisionHandler.canEat(this, check)) {
             if (check.owner && check.owner.cells.length == 1) {
-                console.log(this.owner.uID + "")
                 eventFd.write(JSON.stringify({time: new Date() - 0, gameID: this.gameServer.gameName, event:"eat", eatObject : this.owner.uID, feedObject: check.owner.uID, feedIsBot: check.owner.isBot}) + "\n")
             }
 
