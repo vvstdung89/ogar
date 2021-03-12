@@ -1,0 +1,17 @@
+{"time":1615188006659,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"start"}
+{"time":1615188006659,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"bob","feedObject":"","feedIsBot":true}
+{"time":1615188032458,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"bob","feedObject":"","feedIsBot":true}
+{"time":1615188060538,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"bob","feedObject":"","feedIsBot":true}
+{"time":1615188069099,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"bob","feedObject":"","feedIsBot":true}
+{"time":1615188076699,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"bob","feedObject":"","feedIsBot":true}
+{"time":1615188069099,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"alice","feedObject":"","feedIsBot":true}
+{"time":1615188076699,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"alice","feedObject":"","feedIsBot":true}
+{"time":1615188076699,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"bar","feedObject":"","feedIsBot":true}
+{"time":1615188076699,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"bar","feedObject":"","feedIsBot":true}
+{"time":1615188076699,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"bar","feedObject":"","feedIsBot":true}
+{"time":1615188076699,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"foo","feedObject":"","feedIsBot":true}
+{"time":1615188076699,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"foo","feedObject":"bar","feedIsBot":false}
+{"time":1615188076699,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"bar","feedObject":"","feedIsBot":true}
+{"time":1615188076699,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61362","event":"eat","eatObject":"bob","feedObject":"foo","feedIsBot":false}
+{"time":1615188006659,"gameID":"6fc8e9b4-f1d1-4e1d-af73-96ff82e61462","event":"start"}
+
