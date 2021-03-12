@@ -1,14 +1,9 @@
-FROM node:argon
+FROM node:15
 
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# Install app dependencies
-COPY package.json /usr/src/app/
-RUN npm install
+EXPOSE 4438
 
-# Bundle app source
-COPY . /usr/src/app
-
-EXPOSE 8080
+CMD bash /usr/src/app/run.sh
