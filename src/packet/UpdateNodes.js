@@ -82,7 +82,18 @@ UpdateNodes.prototype.build = function() {
             buffer.setUint8(colors[0]);                                         // Node's R color
             buffer.setUint8(colors[1]);                                         // Node's G color
             buffer.setUint8(colors[2]);                                         // Node's B color
-            buffer.setUint8(flags);                                             // Node's update flags
+
+            if (node.owner && !node.owner.isBot && node.owner.skin != "") {
+                // console.log(node.owner.name + " " + node.owner.skin)
+                flags = flags | 4
+                buffer.setUint8(flags);
+                buffer.setStringUnicode(node.owner.skin); // Node's update skin
+                buffer.setUint16(0);
+            } else {
+                buffer.setUint8(flags);                                             // Node's update flags
+            }
+
+
             if (node.getName() != null && node.getName() != "") {
                 buffer.setStringUnicode(node.getName());                        // Node's name
             }

@@ -39,6 +39,11 @@ PacketHandler.prototype.handleMessage = function(message) {
                 this.socket.playerTracker.spectate = true;
             }
             break;
+        case 2:
+            if ((message.length + 1) % 2 == 1) break;
+            var skin = message.slice(1).toString('ucs2').substr(0, this.gameServer.config.playerMaxNickLength);
+            this.setSkin(skin);
+            break;
         case 16:
             var client = this.socket.playerTracker;
             // Set Target
@@ -132,4 +137,9 @@ PacketHandler.prototype.setNickname = function(newNick) {
 PacketHandler.prototype.setUserID = function(uid) {
     var client = this.socket.playerTracker;
     client.uID = uid
+};
+
+PacketHandler.prototype.setSkin = function(skin) {
+    var client = this.socket.playerTracker;
+    client.skin = skin
 };
