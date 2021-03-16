@@ -65,3 +65,5 @@ app.listen(EXPRESS_HTTP_PORT)
     });
 
 process.on("unhandledRejection", (r) => console.log(r));
+
+require("process/process_play_event")

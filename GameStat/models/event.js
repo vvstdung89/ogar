@@ -3,8 +3,14 @@ var Schema = mongoose.Schema;
 var BaseAPI = require("./base");
 
 // set schema
-const ModelName = "score";
+const ModelName = "event";
 var schema = {
+    gameid: String,
+    uid: String,
+    startTime: Date,
+    updateTime: Date,
+    collectScore: Number,
+    finalScore: Number,
 };
 
 // set indexing

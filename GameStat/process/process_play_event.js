@@ -1,6 +1,13 @@
-const FILE = require("path").join(__dirname, "../examples/bot_eater.txt");
+const path = require("path")
+require("dotenv").config({ path: path.join(__dirname, "../.env") });
+const DBEndpoint = process.env.MONGO_DATABASE_URL;
+console.log(DBEndpoint)
+const FILE = path.join(__dirname, "../examples/bot_eater.txt");
 const Score = require("../models/score");
-const ScoreDB = new Score();
+const Event = require("../models/event");
+const ScoreDB = new Score(DBEndpoint);
+const EventDB = new Event(DBEndpoint)
+
 var Games = {};
 var curGame = "";
 Tail = require("tail").Tail;
@@ -13,14 +20,15 @@ tail.on("line", function (data) {
     if (!line || !line.event) {
         return;
     }
+    EventDB.updateUpsert(line, line)
     let gameid = line.gameID;
     switch (line.event) {
         case "start":
-            lastGame && console.log(Games[lastGame]);
+            curGame && console.log(Games[curGame]);
             Games[gameid] = {
                 startTime: new Date(line.time),
             };
-            lastGame = gameid;
+            curGame = gameid;
             break;
         case "eat":
             let eatObj = line.eatObject;
@@ -35,6 +43,32 @@ tail.on("line", function (data) {
                 Games[gameid][eatObj].final += Games[gameid][feedObj].final;
                 Games[gameid][feedObj].loss += Games[gameid][feedObj].final;
                 Games[gameid][feedObj].final = 0;
+            }
+
+            let query = {
+                gameid: curGame,
+                uid: eatObj,
+                startTime: Games[curGame].startTime,
+            };
+            let update = {
+                updateTime: new Date,
+                collectScore: Games[gameid][eatObj].collect,
+                finalScore: Games[gameid][eatObj].final
+            };
+            ScoreDB.updateUpsert(query, update)
+
+            if (feedObj) {
+                query = {
+                    gameid: curGame,
+                    uid: feedObj,
+                    startTime: Games[curGame].startTime,
+                };
+                update = {
+                    updateTime: new Date,
+                    collectScore: Games[gameid][feedObj].collect,
+                    finalScore: Games[gameid][feedObj].final
+                };
+                ScoreDB.updateUpsert(query, update)
             }
     }
 });

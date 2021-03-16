@@ -31,6 +31,7 @@ exports = module.exports = class BaseModel {
     var SchemaModel = new Schema(schema, {
       collection: ModelName,
       versionKey: false,
+      strict: false,
     });
     this.model = connection.model(ModelName, SchemaModel);
     this.schema = SchemaModel;
