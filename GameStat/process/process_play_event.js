@@ -2,7 +2,7 @@ const path = require("path")
 require("dotenv").config({ path: path.join(__dirname, "../.env") });
 const DBEndpoint = process.env.MONGO_DATABASE_URL;
 console.log(DBEndpoint)
-const FILE = path.join(__dirname, "../examples/bot_eater.txt");
+const FILE = path.join(__dirname, "/data/eventlogs.txt");
 const Score = require("../models/score");
 const Event = require("../models/event");
 const ScoreDB = new Score(DBEndpoint);

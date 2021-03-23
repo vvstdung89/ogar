@@ -1,7 +1,7 @@
 var Vector = require('../modules/Vector');
 var Cell = require('./Cell');
 var fs = require("fs");
-var eventFd = fs.createWriteStream("eventlogs",{ 'flags': 'a'
+var eventFd = fs.createWriteStream("/data/eventlogs.txt",{ 'flags': 'a'
     , 'encoding': null
     , 'mode': 0666,
 });

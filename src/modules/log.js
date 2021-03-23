@@ -15,7 +15,7 @@ function getDate() {
 Log.prototype.setup = function(gameServer) {
     if (!fs.existsSync('./logs')) {
         // Make log folder
-        fs.mkdir('./logs');
+        fs.mkdirSync('./logs');
     }
 
     switch (gameServer.config.serverLogLevel) {
